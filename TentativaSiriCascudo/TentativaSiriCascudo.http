@@ -1,0 +1,6 @@
+@TentativaSiriCascudo_HostAddress = http://localhost:5095
+
+GET {{TentativaSiriCascudo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
