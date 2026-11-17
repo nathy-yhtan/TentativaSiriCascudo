@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using TentativaSiriCascudo.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,11 +10,19 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 
-//❗IMPORTANDO COISA NOVA❗
+//❗SWAGGER❗
 
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
+
+
+//❗ENTITY❗
+
+var connectionString = builder.Configuration.GetConnectionString("ConexaoPadrao");
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 
 //❗TEM Q IMPORTAR ANTES DESSA VAR❗

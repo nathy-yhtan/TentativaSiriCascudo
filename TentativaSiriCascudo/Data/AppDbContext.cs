@@ -11,7 +11,7 @@ namespace TentativaSiriCascudo.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
 
-        //informa ao EF p/ criar uma tabela baseada na classe:
+        //informa ao E.F. p/ criar uma tabela baseada na classe:
 
         public DbSet<Fornecedor> Fornecedores { get; set; }
 
