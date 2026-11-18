@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TentativaSiriCascudo.Data;
+using TentativaSiriCascudo.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,11 @@ var connectionString = builder.Configuration.GetConnectionString("ConexaoPadrao"
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+
+//❗INJEÇÕES (uma p/ cada repository) DE DEPENDÊNCIA❗
+builder.Services.AddScoped<IInfonutriRepository, InfonutriRepository>();
+
 
 
 //❗TEM Q IMPORTAR ANTES DESSA VAR❗
