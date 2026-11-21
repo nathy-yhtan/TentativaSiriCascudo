@@ -20,7 +20,7 @@ namespace TentativaSiriCascudo.Models
 
         [Required]
         [MaxLength(10)]
-        public int Telefone { get; set; }
+        public long Telefone { get; set; }
 
 
         [Required]
