@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Http;
 namespace TentativaSiriCascudo.Controllers
 {
 
+    [Route("api/[controller]")]
+    [ApiController]
     public class InfonutriController : ControllerBase
     {
     
