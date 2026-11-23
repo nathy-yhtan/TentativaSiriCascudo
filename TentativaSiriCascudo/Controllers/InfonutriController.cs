@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Http;
 
 namespace TentativaSiriCascudo.Controllers
 {
-
+ 
     public class InfonutriController : ControllerBase
     {
-    
+
         //variavel de acesso ao banco
         private readonly IInfonutriRepository _repository;
 

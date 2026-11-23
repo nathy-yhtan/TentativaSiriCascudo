@@ -27,7 +27,11 @@ options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 
 //❗INJEÇÕES (uma p/ cada repository) DE DEPENDÊNCIA❗
+builder.Services.AddScoped<IFornecedorRepository, FornecedorRepository>();
 builder.Services.AddScoped<IInfonutriRepository, InfonutriRepository>();
+builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
+builder.Services.AddScoped<IItenspedidoRepository, ItenspedidoRepository>();
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
 
 
