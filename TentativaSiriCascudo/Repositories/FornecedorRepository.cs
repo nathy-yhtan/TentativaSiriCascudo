@@ -29,7 +29,8 @@ namespace TentativaSiriCascudo.Repositories
         //salvar no B.D.
         public async Task Adicionar(Fornecedor fornecedor)
         {
-            await _context.Fornecedores.AllAsync(fornecedor);
+            await _context.Fornecedores.AddAsync(fornecedor);
+
             await _context.SaveChangesAsync();
         }
 

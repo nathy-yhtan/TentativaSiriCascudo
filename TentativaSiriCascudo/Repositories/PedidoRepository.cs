@@ -30,7 +30,7 @@ namespace TentativaSiriCascudo.Repositories
         //salvar no B.D.
         public async Task Adicionar(Pedido pedido)
         {
-            await _context.Infonutris.AddAsync(pedido);
+            await _context.Pedidos.AddAsync(pedido);
             await _context.SaveChangesAsync();
         }
 

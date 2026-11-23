@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
 using TentativaSiriCascudo.Data;
 using TentativaSiriCascudo.Repositories;
 
@@ -27,6 +28,7 @@ options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 
 //❗INJEÇÕES (uma p/ cada repository) DE DEPENDÊNCIA❗
+
 builder.Services.AddScoped<IFornecedorRepository, FornecedorRepository>();
 builder.Services.AddScoped<IInfonutriRepository, InfonutriRepository>();
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();

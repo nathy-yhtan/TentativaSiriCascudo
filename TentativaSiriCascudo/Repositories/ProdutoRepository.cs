@@ -29,7 +29,7 @@ namespace TentativaSiriCascudo.Repositories
         //salvar no B.D.
         public async Task Adicionar(Produto produto)
         {
-            object value = await _context.Infonutris.AddAsync(produto);
+            object value = await _context.Produtos.AddAsync(produto);
             await _context.SaveChangesAsync();
         }
 

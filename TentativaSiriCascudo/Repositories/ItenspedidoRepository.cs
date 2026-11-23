@@ -29,7 +29,7 @@ namespace TentativaSiriCascudo.Repositories
         //salvar no B.D.
         public async Task Adicionar(Itenspedido itenspedido)
         {
-            await _context.Infonutris.AddAsync(itenspedido);
+            await _context.Itenspedidos.AddAsync(itenspedido);
             await _context.SaveChangesAsync();
         }
 
