@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
 using TentativaSiriCascudo.Data;
 using TentativaSiriCascudo.Repositories;
+using TentativaSiriCascudo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,14 @@ builder.Services.AddScoped<IInfonutriRepository, InfonutriRepository>();
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 builder.Services.AddScoped<IItenspedidoRepository, ItenspedidoRepository>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+
+//❗REGISTRO DOS SERVIÇOS❗
+
+builder.Services.AddScoped<IInfonutriService, InfonutriService>();
+builder.Services.AddScoped<IFornecedorService, FornecedorService>();
+builder.Services.AddScoped<IPedidoService, PedidoService>();
+builder.Services.AddScoped<IItenspedidoService, ItenspedidoService>();
+builder.Services.AddScoped<IProdutoService, ProdutoService>();
 
 
 

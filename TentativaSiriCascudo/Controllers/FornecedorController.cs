@@ -3,6 +3,7 @@ using TentativaSiriCascudo.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 
+//quem recebe as requisisoes e etreca ao serviço
 namespace TentativaSiriCascudo.Controllers
 {
 

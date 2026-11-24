@@ -4,6 +4,7 @@ using TentativaSiriCascudo.Models;
 
 namespace TentativaSiriCascudo.Repositories
 {
+    //camada de acesso aos dados, so ele se comunica com o B.D. e o E.F.
     public class FornecedorRepository : IFornecedorRepository
     {
 
