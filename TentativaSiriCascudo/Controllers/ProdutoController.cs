@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using TentativaSiriCascudo.DTOs;
 using TentativaSiriCascudo.Repositories;
-using Microsoft.AspNetCore.Http;
+using TentativaSiriCascudo.Services;
 
 namespace TentativaSiriCascudo.Controllers
 {
@@ -11,18 +13,34 @@ namespace TentativaSiriCascudo.Controllers
     {
 
         //variavel de acesso ao banco
-        private readonly IProdutoRepository _repository;
+        private readonly IProdutoService _service;
 
 
         //injecao de dependencia
-        public ProdutoController(IProdutoRepository repository)
+        public ProdutoController(IProdutoService service)
         {
-            _repository = repository;
+            _service = service;
         }
 
 
         [HttpGet]
-        public async Task<IActionResult> Get() => Ok(await _repository.ListarTudo());
+        public async Task<IActionResult> Get() => Ok(await _service.ListarTudo());
+
+
+        [HttpPost]
+        public async Task<IActionResult> Post(ProdutoDTO produtoDTO)
+        {
+            try
+            {
+                await _service.Criar(produtoDTO);
+                return Ok("Produto adicionado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+                //erro 400: servidor não entendeu ou recusou processar a sua solicitação devido a um problema no envio dos dados pelo navegador, aplicativo ou rede
+            }
+        }
 
     }
 }
