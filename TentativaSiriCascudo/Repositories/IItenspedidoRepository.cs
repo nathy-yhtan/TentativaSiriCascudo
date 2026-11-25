@@ -6,11 +6,11 @@ namespace TentativaSiriCascudo.Repositories
     public interface IItenspedidoRepository
     {
 
-        Task<IEnumerable<Pedido>> ListarTudo();
+        Task<IEnumerable<Itenspedido>> ListarTudo();
 
 
         //regra pra criar novos registros
-        Task Adicionar(Pedido pedido);
+        Task Adicionar(Itenspedido itenspedido);
 
     }
 }

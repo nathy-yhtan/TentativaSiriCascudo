@@ -33,15 +33,5 @@ namespace TentativaSiriCascudo.Repositories
             await _context.SaveChangesAsync();
         }
 
-        //VENDO SE CONSERTA
-        Task<IEnumerable<Pedido>> IProdutoRepository.ListarTudo()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task Adicionar(Pedido pedido)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
