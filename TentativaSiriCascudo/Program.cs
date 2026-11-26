@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using MySqlConnector;
+using System.Text;
 using TentativaSiriCascudo.Data;
 using TentativaSiriCascudo.Repositories;
 using TentativaSiriCascudo.Services;
@@ -19,14 +22,12 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 
-
 //❗ENTITY❗
 
 var connectionString = builder.Configuration.GetConnectionString("ConexaoPadrao");
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-
 
 //❗INJEÇÕES (uma p/ cada repository) DE DEPENDÊNCIA❗
 
@@ -43,6 +44,19 @@ builder.Services.AddScoped<IFornecedorService, FornecedorService>();
 builder.Services.AddScoped<IPedidoService, PedidoService>();
 builder.Services.AddScoped<IItenspedidoService, ItenspedidoService>();
 builder.Services.AddScoped<IProdutoService, ProdutoService>();
+
+//❗CONFIGURAÇÃO DO JWT❗
+
+var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+
+        }
+    });
 
 
 
