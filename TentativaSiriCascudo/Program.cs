@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi;
 using MySqlConnector;
 using System.Text;
 using TentativaSiriCascudo.Data;
@@ -54,9 +55,25 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
-
-        }
+            ValidateIssuerSigningKey = true, //verifica se o token foi assinado corretamente
+            IssuerSigningKey = new SymmetricSecurityKey(key), //usa a chave secreta para validar o token
+            ValidateIssuer = true, //valida qm cirou o token
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidateAudience = true, //valida para qm o token foi criado
+            ValidAudience = builder.Configuration["Jwt:Audience"]
+        }; 
     });
+
+//❗CONFIGURAÇÃO DO BOTÃO NO SWAGGER❗
+
+builder.Services.AddSwaggerGen(c=>
+{
+    //criar o botao uthorize no swagger
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme)
+    {
+        Name="Authorizatiom"
+    }
+}
 
 
 
@@ -66,7 +83,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
-{ 
+{
     app.MapOpenApi();
 
 
